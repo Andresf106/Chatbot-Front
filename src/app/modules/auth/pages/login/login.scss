@@ -1,0 +1,133 @@
+/* Fondo */
+.wrapper-login {
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f87ff, #1ac9a0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/fondo.jpg") no-repeat center center;
+  background-size: cover;
+  opacity: 0.25;
+  z-index: 0;
+}
+
+/* Branding */
+.login-brand {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 2;
+}
+
+.login-logo {
+  width: 55px;
+}
+
+.login-title {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Card */
+.login-form {
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  padding: 40px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Form */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-label {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.6);
+  padding: 10px 5px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+}
+
+.form-line {
+  display: none;
+}
+
+/* Botón */
+.btn-general {
+  margin-top: 10px;
+  padding: 14px;
+  background: #b9ebf7;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0f87ff;
+  cursor: pointer;
+}
+
+.btn-general:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-brand {
+    top: 20px;
+    left: 20px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .login-form {
+    margin: 0 20px;
+  }
+}
+
+.register-link {
+  text-align: center;
+}
+
+.register-link a {
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.register-link a:hover {
+  opacity: 0.8;
+}

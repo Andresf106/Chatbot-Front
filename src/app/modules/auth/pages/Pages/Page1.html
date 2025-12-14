@@ -1,0 +1,50 @@
+<div class="page-container">
+
+  <!-- ===== HEADER / TÍTULO ===== -->
+  <header class="app-header">
+    <img src="/assets/images/Helpmedic-IA.png" alt="Help Medic" />
+    <h1>Help Medic IA</h1>
+    <p>Tu asistente médico inteligente</p>
+  </header>
+
+  <!-- ===== BOTONES DE ACCIÓN ===== -->
+  <section class="actions">
+    <button class="btn cita">
+      📅 Sacar Cita Médica
+    </button>
+
+    <button class="btn medicamento">
+      💊 Consultar Medicamentos
+    </button>
+  </section>
+
+  <!-- ===== CHAT ===== -->
+  <section class="chat-box">
+    <div class="messages">
+      <div
+        *ngFor="let msg of messages"
+        [class.user]="msg.from === 'user'"
+        [class.bot]="msg.from === 'bot'"
+        class="message"
+      >
+        {{ msg.text }}
+      </div>
+    </div>
+
+    <div class="input-box">
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        placeholder="Escribe tu consulta médica..."
+        (keydown.enter)="sendMessage()"
+      />
+      <button (click)="sendMessage()">Enviar</button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="app-footer">
+    <p>⚕️ Help Medic © 2025 | Información orientativa, no sustituye consulta médica</p>
+  </footer>
+
+</div>

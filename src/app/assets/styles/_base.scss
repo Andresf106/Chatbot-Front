@@ -1,0 +1,69 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+//BUTTONS
+.btn{
+  width: 200px;
+  height: 38px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-info{
+  background-color: steelblue;
+}
+
+.btn-susses{
+  background-color: darkgreen;
+}
+
+.btn-danger{
+  background-color: darkred;
+}
+
+//FORMS
+.form-general {
+
+  .form-container{
+    display: flex;
+    flex-direction: column;
+
+    .form-label {
+      font-weight: 500;
+      font-size: 14px;
+      color: #0c0b0b;
+      margin-bottom: 4px;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border 0.2s;
+
+      &:focus {
+        border-color: #000;
+        outline: none;
+      }
+    }
+
+    .form-textarea{
+      height: 100px;
+      max-height: 100px;
+    }
+  }
+}
+
+.content-btn-form{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

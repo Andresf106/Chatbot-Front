@@ -1,0 +1,46 @@
+<div class="wrapper-register">
+
+  <!-- Branding -->
+  <div class="register-brand">
+    <img src="/assets/images/Helpmedic-IA.png" alt="HelpMedic IA" />
+    <h1>Help Medic</h1>
+  </div>
+
+  <!-- Card -->
+  <div class="register-card">
+    <h2>Registro de Usuario</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="sendRegister()">
+
+      <div class="form-row">
+        <input type="text" placeholder="Nombre"
+               formControlName="nombre" />
+        <input type="text" placeholder="Segundo nombre"
+               formControlName="segundo_nombre" />
+      </div>
+
+      <input type="email" placeholder="Correo electrónico"
+             formControlName="correo" />
+
+      <div class="form-row">
+        <input type="text" placeholder="Rol"
+               formControlName="rol" />
+        <input type="text" placeholder="Ciudad"
+               formControlName="ciudad" />
+      </div>
+
+      <div class="form-row">
+        <input type="text" placeholder="Celular"
+               formControlName="celular" />
+        <input type="text" placeholder="Dirección"
+               formControlName="direccion" />
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid">
+        Registrar
+      </button>
+
+    </form>
+  </div>
+
+</div>

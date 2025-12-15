@@ -1,8 +1,171 @@
 <div class="wrapper-administration">
 
+  <header class="header">
+    <div class="header-container">
+
+      <div class="brand">
+        <div class="icon">
+          <img src="assets/img/Helpmedic-IA.png" alt="Logo">
+        </div>
+        <span>MediCitas IA</span>
+      </div>
+
+      <nav class="nav">
+        <a (click)="scrollTo('features')">Características</a>
+        <a (click)="scrollTo('how-it-works')">Cómo Funciona</a>
+        <a (click)="scrollTo('contact')">Contacto</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn outline">
+          <i class="lucide-pill"></i>
+          <span>Medicamentos</span>
+        </button>
+
+        <button class="btn primary">
+          <i class="lucide-calendar"></i>
+          <span>Mis Citas</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+
+        <div class="badge">
+          <i class="lucide-sparkles"></i>
+          <span>Impulsado por Inteligencia Artificial</span>
+        </div>
+
+        <h1>
+          Gestiona tus citas médicas de manera
+          <span class="highlight">inteligente</span>
+        </h1>
+
+        <p>
+          Nuestra IA te ayuda a programar, recordar y gestionar todas tus citas
+          médicas y medicamentos en un solo lugar. Salud simplificada.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary" (click)="toggle()">
+            Comenzar Ahora
+            <i class="lucide-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero-glow"></div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="features-container">
+
+      <div class="features-header">
+        <h2>Todo lo que necesitas para cuidar tu salud</h2>
+        <p>
+          Herramientas poderosas diseñadas para simplificar la gestión de tu salud
+        </p>
+      </div>
+
+      <div class="features-grid">
+        @for (feature of features; track feature) {
+          <div class="feature-card">
+            <div class="icon">
+              <i [class]="feature.icon"></i>
+            </div>
+
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how">
+    <div class="how-container">
+
+      <div class="how-header">
+        <h2>Cómo funciona</h2>
+        <p>Cuatro simples pasos para tomar el control de tu salud</p>
+      </div>
+
+      <div class="how-grid">
+        @for (step of steps; track step.step) {
+          <div class="step-card">
+
+            <div class="step-number">
+              {{ step.step }}
+            </div>
+
+            <div class="icon">
+              <i [class]="step.icon"></i>
+            </div>
+
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+
+          </div>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="contact" class="footer">
+    <div class="footer-container">
+
+      <div class="footer-grid">
+
+        <div class="brand">
+          <div class="brand-header">
+            <div class="icon">
+              <img src="assets/img/Helpmedic-IA.png" alt="">
+            </div>
+            <span>MediCitas IA</span>
+          </div>
+
+          <p>
+            La plataforma inteligente para gestionar tus citas médicas y
+            medicamentos. Cuida tu salud de manera simple y eficiente.
+          </p>
+        </div>
+
+        <div class="column">
+          <h3>Producto</h3>
+          <ul>
+            <li><a>Características</a></li>
+            <li><a>Precios</a></li>
+            <li><a>Seguridad</a></li>
+          </ul>
+        </div>
+
+        <div class="column">
+          <h3>Soporte</h3>
+          <ul>
+            <li><a>Ayuda</a></li>
+            <li><a>Contacto</a></li>
+            <li><a>Privacidad</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 MediCitas IA. Todos los derechos reservados.</p>
+      </div>
+
+    </div>
+  </footer>
 
   <div class="chat-wrapper" [class.open]="isOpen">
-
 
     <div class="chat-window">
       <header class="chat-header">
@@ -37,11 +200,9 @@
 
   </div>
 
-
 </div>
 
 
-<!-- Chat wrapper -->
 
 
 

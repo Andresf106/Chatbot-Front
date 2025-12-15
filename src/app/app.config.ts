@@ -13,8 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-
-    // 🔥 NECESARIO para HttpClient (ChatService)
     provideHttpClient()
   ]
 };

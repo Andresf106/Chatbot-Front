@@ -154,7 +154,7 @@ export class MainAdministration implements OnInit {
       next: data => {
         this.messages.push({
           id: this.messages.length + 1,
-          text: data,
+          text: data.respuesta,
           sender: 'agent',
           timestamp: new Date(),
         })

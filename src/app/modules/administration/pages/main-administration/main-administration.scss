@@ -20,7 +20,6 @@
 
   .appointments-panel.open {
     transform: translateX(0);
-    position: relative;
   }
 
   .panel-header {
@@ -56,9 +55,8 @@
     border-bottom: 1px solid #e5e7eb;
 
     .header-container {
-      max-width: 1200px;
+      width: 96%;
       height: 100%;
-      margin: 0 auto;
       padding: 0 24px;
       display: flex;
       align-items: center;
@@ -606,7 +604,7 @@
 
     .chat-window {
       position: absolute;
-      bottom: 80px;
+      bottom: 70px;
       right: 0;
       width: 380px;
       height: 600px;
@@ -757,8 +755,8 @@
     }
 
     .chat-fab {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       border: none;
       cursor: pointer;

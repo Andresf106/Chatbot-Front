@@ -12,61 +12,66 @@
   </header>
 
   <div class="appointments-list">
-    @for (a of appointments; track a.date) {
+    @for (a of appointments; track a.dia_cita) {
       <div class="appointment-card">
         <div class="card-header">
           <div class="date">
             <span class="icon">📅</span>
-            {{ a.date }}
+            {{ a.dia_cita }}
           </div>
-
           <span
             class="status"
-            [class.pending]="a.status === 'Pendiente'"
-            [class.confirmed]="a.status === 'Confirmada'"
+            [class.pending]="a.estado === 'Pendiente'"
+            [class.confirmed]="a.estado === 'activo'"
           >
-            {{ a.status }}
+            {{ a.estado }}
           </span>
         </div>
 
         <div class="time">
-          ⏰ {{ a.time }}
+          ⏰ {{ a.hora_cita }}
         </div>
-
         <div class="reason">
           <strong>Motivo</strong>
-          <p>{{ a.reason }}</p>
+          <p>{{ a.motivo }}</p>
         </div>
       </div>
     }
   </div>
 
+  <div class="appointments-create" [class.open]="showAppointments">
+
+    <form class="appointment-form" [formGroup]="form" (ngSubmit)="submit()">
+
+      <h2>Nueva Cita</h2>
+      <div class="icon-close">
+        <button (click)="closeCreateAppointments()">✕</button>
+      </div>
+
+      <div class="field">
+        <label>Día de la cita</label>
+        <input type="date" formControlName="dia_cita" />
+      </div>
+
+      <div class="field">
+        <label>Hora</label>
+        <input type="time" formControlName="hora_cita" />
+      </div>
+
+      <div class="field">
+        <label>Motivo</label>
+        <textarea rows="3" formControlName="motivo"></textarea>
+      </div>
+
+      <div class="content-btn">
+        <button class="cancel" type="submit" (click)="closeCreateAppointments()">cancelar</button>
+        <button type="submit">Guardar cita</button>
+      </div>
+
+    </form>
+
+  </div>
+
 </section>
 
-<div class="appointments-create" [class.open]="showAppointments">
 
-  <form class="appointment-form" [formGroup]="form" (ngSubmit)="submit()">
-
-    <h2>Nueva Cita</h2>
-
-    <div class="field">
-      <label>Día de la cita</label>
-      <input type="date" formControlName="dia_cita" />
-    </div>
-
-    <div class="field">
-      <label>Hora</label>
-      <input type="time" formControlName="hora_cita" />
-    </div>
-
-    <div class="field">
-      <label>Motivo</label>
-      <textarea rows="3" formControlName="motivo"></textarea>
-    </div>
-
-    <button type="submit">Guardar cita</button>
-    <button type="submit" (click)="closeCreateAppointments()">cancelar</button>
-
-  </form>
-
-</div>

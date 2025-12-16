@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {StorageService} from '@app/core/services/StorageService ';
 import {Appointment} from '@app/modules/administration/pages/appointment/appointment';

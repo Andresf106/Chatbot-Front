@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../../../environment/environment';
 
 export interface ChatResponse {
   respuesta: string;
@@ -11,13 +12,12 @@ export interface ChatResponse {
 })
 export class ChatService {
 
-  private apiUrl = 'http://localhost:8000/chat/';
+  private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
-  sendMessage(message: string): Observable<ChatResponse> {
-    return this.http.post<ChatResponse>(this.apiUrl, {
-      mensaje: message
-    });
+  sendMessage(data:any): Observable<any> {
+    return this._http.post<any>(this.apiUrl + "/chat", data);
   }
+
 }

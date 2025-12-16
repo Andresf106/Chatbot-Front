@@ -5,6 +5,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {StorageService} from '@app/core/services/StorageService ';
 import {Appointment} from '@app/modules/administration/pages/appointment/appointment';
+import {ChatService} from '@app/modules/administration/service/chat.service';
 
 @Component({
   selector: 'app-main-administration',
@@ -107,6 +108,7 @@ export class MainAdministration implements OnInit {
   constructor(
     private _router: Router,
     private _storage: StorageService,
+    private _chat: ChatService,
   ) {
 
   }
@@ -142,16 +144,34 @@ export class MainAdministration implements OnInit {
       timestamp: new Date(),
     })
 
+    const data = {
+      mensaje: this.inputValue
+    }
+
     this.inputValue = ''
 
-    setTimeout(() => {
-      this.messages.push({
-        id: this.messages.length + 1,
-        text: 'Gracias por tu mensaje. Un miembro del equipo te responderá pronto.',
-        sender: 'agent',
-        timestamp: new Date(),
-      })
-    }, 1000)
+    this._chat.sendMessage(data).subscribe({
+      next: data => {
+        this.messages.push({
+          id: this.messages.length + 1,
+          text: data,
+          sender: 'agent',
+          timestamp: new Date(),
+        })
+      },
+      error: err => {
+        console.log("err", err)
+      }
+    })
+
+    // setTimeout(() => {
+    //   this.messages.push({
+    //     id: this.messages.length + 1,
+    //     text: 'Gracias por tu mensaje. Un miembro del equipo te responderá pronto.',
+    //     sender: 'agent',
+    //     timestamp: new Date(),
+    //   })
+    // }, 1000)
   }
 
   scrollTo(id: string) {

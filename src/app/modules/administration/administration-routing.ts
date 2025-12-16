@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'administration',
+    path: '',
     loadComponent: () => import('./pages/main-administration/main-administration').then(c => c.MainAdministration),
   }
 ];

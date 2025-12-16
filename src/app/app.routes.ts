@@ -2,11 +2,16 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
 
-  // 🔐 Auth
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/administration/administration-routing')
+        .then(c => c.routes),
   },
   {
     path: 'login',
@@ -20,24 +25,6 @@ export const routes: Routes = [
       import('./modules/auth/pages/register/register')
         .then(c => c.Register),
   },
-
-  // 🛠 Administración
-  {
-    path: 'admin',
-    loadChildren: () =>
-      import('./modules/administration/administration-routing')
-        .then(c => c.routes),
-  },
-  
-    // 👇 RUTA PARA VER PAGE1 (CHAT)
-  {
-    path: 'chat',
-    loadComponent: () =>
-      import('./modules/auth/pages/Pages/Page1')
-        .then(c => c.Page1),
-  },
-
-  // ❌ Ruta no encontrada
   {
     path: '**',
     redirectTo: 'login',

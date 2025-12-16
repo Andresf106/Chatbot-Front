@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {Router} from '@angular/router';
+import {StorageService} from '@app/core/services/StorageService ';
+import {Appointment} from '@app/modules/administration/pages/appointment/appointment';
 
 @Component({
   selector: 'app-main-administration',
   imports: [
     FormsModule,
-    DatePipe
+    DatePipe,
+    MatDialogModule,
+    Appointment
   ],
   templateUrl: './main-administration.html',
   styleUrl: './main-administration.scss'
 })
-export class MainAdministration {
+export class MainAdministration implements OnInit {
 
   features = [
     {
@@ -84,6 +90,9 @@ export class MainAdministration {
   ];
 
   isOpen = false
+  login = false
+  showAppointments = false;
+  isDoctor: boolean | null = false
   inputValue = ''
 
   messages: any[] = [
@@ -94,6 +103,30 @@ export class MainAdministration {
       timestamp: new Date(),
     },
   ]
+
+  constructor(
+    private _router: Router,
+    private _storage: StorageService,
+  ) {
+
+  }
+
+  ngOnInit() {
+    const token = this._storage.get<string>('user');
+    this.isDoctor = this._storage.get<boolean>('doctor');
+
+    if (token) {
+      this.login = true
+    }
+  }
+
+  openLogin(): void {
+   this._router.navigate(['/login']).then();
+  }
+
+  openRegister(): void {
+    this._router.navigate(['/register']).then();
+  }
 
   toggle() {
     this.isOpen = !this.isOpen
@@ -130,5 +163,15 @@ export class MainAdministration {
       block: 'start'
     });
   }
+
+  openAppointments() {
+    this.showAppointments = true;
+  }
+
+  closeAppointments() {
+    this.showAppointments = false;
+  }
+
+
 
 }

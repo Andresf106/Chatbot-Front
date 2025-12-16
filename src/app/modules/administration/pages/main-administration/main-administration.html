@@ -1,5 +1,17 @@
 <div class="wrapper-administration">
 
+  <div class="appointments-panel" [class.open]="showAppointments">
+
+    <header class="panel-header">
+      <h2>Mis Citas</h2>
+      <button (click)="closeAppointments()">✕</button>
+    </header>
+
+    <app-appointment></app-appointment>
+
+  </div>
+
+
   <header class="header">
     <div class="header-container">
 
@@ -7,7 +19,7 @@
         <div class="icon">
           <img src="assets/img/Helpmedic-IA.png" alt="Logo">
         </div>
-        <span>MediCitas IA</span>
+        <span>Help Medic IA</span>
       </div>
 
       <nav class="nav">
@@ -16,18 +28,34 @@
         <a (click)="scrollTo('contact')">Contacto</a>
       </nav>
 
-      <div class="actions">
-        <button class="btn outline">
-          <i class="lucide-pill"></i>
-          <span>Medicamentos</span>
-        </button>
+      @if (!login) {
+        <div class="actions">
+          <button class="btn primary" (click)="openLogin()">
+            <i class="lucide-calendar"></i>
+            <span>Iniciar sesion</span>
+          </button>
+        </div>
 
-        <button class="btn primary">
-          <i class="lucide-calendar"></i>
-          <span>Mis Citas</span>
-        </button>
-      </div>
+      } @else {
+        <div class="actions">
+          <button class="btn outline">
+            <i class="lucide-pill"></i>
+            <span>Medicamentos</span>
+          </button>
 
+          <button class="btn primary" (click)="openAppointments()">
+            <i class="lucide-calendar"></i>
+            <span>Mis Citas</span>
+          </button>
+        </div>
+      }
+      @if (isDoctor) {
+        <div class="actions ">
+          <button class="btn icon primary">
+            <i class="pi pi-globe"></i>
+          </button>
+        </div>
+      }
     </div>
   </header>
 
@@ -51,7 +79,7 @@
         </p>
 
         <div class="actions">
-          <button class="btn primary" (click)="toggle()">
+          <button class="btn primary" (click)="openRegister()">
             Comenzar Ahora
             <i class="lucide-arrow-right"></i>
           </button>
@@ -129,7 +157,7 @@
             <div class="icon">
               <img src="assets/img/Helpmedic-IA.png" alt="">
             </div>
-            <span>MediCitas IA</span>
+            <span>Help Medic IA</span>
           </div>
 
           <p>
@@ -159,7 +187,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 MediCitas IA. Todos los derechos reservados.</p>
+        <p>© 2025 Help Medic IA. Todos los derechos reservados.</p>
       </div>
 
     </div>
